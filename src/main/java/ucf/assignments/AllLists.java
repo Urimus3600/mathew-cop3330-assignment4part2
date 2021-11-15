@@ -1,4 +1,4 @@
-package com.example.mathewcop3330assignment4part2;
+package ucf.assignments;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,7 +18,7 @@ public class AllLists {
 //        TLListSize = 0
 //    }
     AllLists(){
-        TLList = new ArrayList<com.example.mathewcop3330assignment4part2.TodoList>();
+        TLList = new ArrayList<TodoList>();
         TLListSize = 0;
     }
 //    loadAll(Scanner inputReader){

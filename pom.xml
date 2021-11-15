@@ -81,7 +81,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.example.mathewcop3330assignment4part2/com.example.mathewcop3330assignment4part2.HelloApplication
+                                com.example.mathewcop3330assignment4part2/com.example.ucf.HelloApplication
                             </mainClass>
                         </configuration>
                     </execution>

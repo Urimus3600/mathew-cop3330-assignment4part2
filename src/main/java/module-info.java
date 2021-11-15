@@ -7,6 +7,6 @@ module com.example.mathewcop3330assignment4part2 {
     requires org.kordamp.bootstrapfx.core;
     requires javafx.graphics;
 
-    opens com.example.mathewcop3330assignment4part2 to javafx.fxml;
-    exports com.example.mathewcop3330assignment4part2;
+    opens ucf.assignments to javafx.fxml;
+    exports ucf.assignments;
 }

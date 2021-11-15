@@ -1,4 +1,4 @@
-package com.example.mathewcop3330assignment4part2;
+package ucf.assignments;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

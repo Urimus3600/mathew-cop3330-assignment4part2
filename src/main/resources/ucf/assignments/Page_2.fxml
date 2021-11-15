@@ -10,7 +10,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.effect.ColorAdjust?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.mathewcop3330assignment4part2.Controller">
+            fx:controller="ucf.assignments.Controller">
     <top>
         <StackPane alignment="TOP_LEFT" prefHeight="79.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
