@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.ColorAdjust?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.mathewcop3330assignment4part2.Controller">
+    <top>
+        <StackPane alignment="TOP_LEFT" prefHeight="79.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="81.0" stroke="BLACK" strokeType="INSIDE" width="602.0" />
+                <Label prefHeight="71.0" prefWidth="263.0" text="Item Number: #" textFill="#0b00d4">
+                    <padding>
+                        <Insets bottom="5.0" left="30.0" right="30.0" top="30.0" />
+                    </padding>
+                    <font>
+                        <Font size="29.0" />
+                    </font>
+                </Label>
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <effect>
+                <ColorAdjust />
+            </effect>
+        </StackPane>
+    </top>
+    <right>
+        <StackPane prefHeight="320.0" prefWidth="126.0" BorderPane.alignment="CENTER">
+            <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c2ddf7" height="320.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" width="136.0" />
+                <VBox alignment="TOP_CENTER" prefHeight="320.0" prefWidth="82.0">
+                    <children>
+                        <Label prefHeight="18.0" prefWidth="118.0" text="Instructions:" textAlignment="JUSTIFY" textFill="#345fcc" />
+                        <Label prefHeight="58.0" prefWidth="120.0" text="To edit the description of an Item click on the description" wrapText="true" />
+                        <Label prefHeight="58.0" prefWidth="120.0" text="Similarly, to edit the date, click on the date" wrapText="true" />
+                        <Label text="To Remove an Item, enter the number next to the Item" wrapText="true" />
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </VBox>
+            </children>
+        </StackPane>
+    </right>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Date: 00-00-0000">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </Label>
+                <Label text="Description:">
+                    <padding>
+                        <Insets bottom="3.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label text="I have to do something on this date.">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="2.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,142 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+Controller - AllLists
+class Controller{
++public AllLists allList
++int pageNumber
+
++addTodoListResponse()
++addTodoListCancel()
++addTodoListDone()
++private clearAddTodoList()
+
++loadTodoListResponse()
++loadTodoListCancel()
++loadTodoListDone()
++private clearLoadTodoList()
+
++loadAllTodoList()
++loadAllTodoListCancel()
++loadAllTodoListDone()
++private clearLoadTodoList()
+
++selectTodoListResponse()
++loadTodoListPage()
+
++addItemResponse()
++addItemResponseCancel()
++addItemResponseDone()
++private clearAddItemResponse()
+
++RemoveItemResponse()
++RemoveItemResponseCancel()
++RemoveItemResponseDone()
++private clearRemoveItemResponse()
+
++CompleteOnlyResponse()
++IncompleteOnlyResponse()
++private filterCompleteness()
+
++EditDateResponse()
++EditDateCancel()
++EditDateDone()
++private clearEditDateResponse()
+
++EditDescriptionResponse()
++EditDescriptionCancel()
++EditDescriptionDone()
++private clearEditDescriptionResponse()
+
++selectItemResponse()
+
++ItemEditDateResponse()
++ItemEditDateCancel()
++ItemEditDateDone()
++private clearItemEditDateResponse()
+
++ItemEditDescriptionResponse()
++ItemEditDescriptionCancel()
++ItemEditDescriptionDone()
++private clearItemEditDescriptionResponse()
+
++backButtonResponse()
++private loadLastPage(int pageNumber)
+}
+class Item{
++private String description
++private boolean complete
++private int date[3];
++Item()
++Item(String description, String date)
++item(String description, String date, boolean complete)
++private boolean validateDate(String date)
++private boolean validateDescription(String description)
++setDescription(String description)
++String getDescription()
++toggleComplete()
++bool getComplete()
++private String formatDate()
++String getDate()
++int getYear()
++int getMonth()
++int getDay()
++setDate(String date)
+}
+
+TodoList -- Item
+
+class TodoList{
++public ArrayList<item> List
++private int ListSize
++private String title
++TodoList()
++TodoList(String title)
++private boolean ifEmpty(String title)
++addItem(String description, String date, boolean complete)
++removeItem(int index)
++private boolean validateIndex(int index)
++private increaseListSize()
++private decreaseListSize()
++int getListSize()
++setTitle(String title)
++String getTitle()
+}
+AllLists -- TodoList
+class AllLists{
++public ArrayList<TodoList> TLList;
++private TLListSize;
++AllLists()
++loadAll(Scanner inputReader)
++loadTodoList(Scanner inputReader)
++storeAll(FileWriter outWriter)
++storeTodoList(FileWriter outWriter, int index)
++add TodoList(String title)
++int getSize()
++private increaseTLListSize()
++private decreaseTLListSize()
++addTodoList(String title)
++removeTodoList(int (int index)
+}
+class OutputFile{
++public FileWriter outWriter
++private String fileName
++OutputFile()
++OutputFile(String fileName)
++private ifError(String fileName)
++private setOutWriter(fileName)
++String getFileName()
+}
+InputFile --OutputFile
+class InputFile{
++OutputFile outputFile
++public Scanner inputReader
++private String fileName
++InputFile()
++InputFile(String fileName)
++private ifError(String fileName)
++private setInputReader(String fileName)
++String getFileName()
++getOutputFile()
++getOutputFile(String title)
+}
+@enduml
