@@ -1,6 +1,8 @@
 package com.example.mathewcop3330assignment4part2;
 
-import java.util.Scanner;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Item {
 
@@ -13,8 +15,8 @@ public class Item {
 //    //indicates that task is completed with true value
 
 //    private int date[3];
-    private int[] date;
-//    //holds integers for {day, month, year}
+    private String date;
+//    //holds integers for {year, month, day}
 //
 //    Item(){
     Item() {
@@ -24,7 +26,7 @@ public class Item {
 //        set to uncomplete complete = false
         complete = false;
 //        set date to 0-0-0000 or date = {0,0,0}
-        date = new int[]{0,0,0};
+        date = "No Date";
 //    }
     }
 //    Item(String description, String date){
@@ -47,40 +49,11 @@ public class Item {
     }
 //
 //    private boolean validateDate(String date){
-    private boolean validateDate(String date) {
-//        checks if date is in format mm-dd-yyyy
-//        also that values of each are within expected values
-        int i=0;
-        if(date.charAt(i)>='0' && date.charAt(i++)<='1' && date.length()==10){
-            if(date.charAt(i)>='0' && date.charAt(i++)<='9'){
-                if(date.charAt(i++)=='-'){
-                    if(date.charAt(i)>='0' && date.charAt(i++)<='3'){
-                        if(date.charAt(i)>='0' && date.charAt(i++)<='9'){
-                            if(date.charAt(i++)=='-'){
-                                if(date.charAt(i)>='0' && date.charAt(i++)<='9'){
-                                    if(date.charAt(i)>='0' && date.charAt(i++)<='9'){
-                                        if(date.charAt(i)>='0' && date.charAt(i++)<='9'){
-                                            if(date.charAt(i)>='0' && date.charAt(i)<='9'){
-                                                return true;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        System.out.println("Invalid Date");
-        return false;
-//    }
-    }
 
 //    setDescription(String description){
     public boolean setDescription(String description) {
 //        if description is valid
-        if(!description.isBlank()){
+        if((!description.isBlank()) && (description.length()<=256)){
             this.description = description;
 //            set this class's description equal to description
             return true;
@@ -118,78 +91,34 @@ public class Item {
 //        return concatenated string of integer at 1 then a dash then the one at 0 then dash then the one at 2
 //    }
     private String getDate(){
-        String Date, day, month, year;
-        if(date[0]<10)
-            day = "0"+date[0];
-        else
-            day = "" + date[0];
+        return date;
+    }
+    final static String DATE_FORMAT = "yyyy-MM-dd";
 
-        if(date[1]<10)
-            month = "0"+date[0];
-        else
-            month = "" + date[0];
-
-        if(date[2]<1000){
-            year = "0" + date[2];
-            if(date[2]<100){
-                year="00" + date[2];
-                if(date[2]<10){
-                    year="000" + date[2];
-                    if(date[2]==0){
-                        year="0000";
-                    }
-                }
-            }
+    public static boolean isDateValid(String date)
+    {
+        try {
+            DateFormat df = new SimpleDateFormat(DATE_FORMAT);
+            df.setLenient(false);
+            df.parse(date);
+            return true;
+        } catch (ParseException e) {
+            return false;
         }
-        else
-            year = "" + date[0];
-        Date = month+"-"+day+"-"+year;
-        return Date;
-    }
-
-//    int getYear(){
-//        return date's third integer
-//    }
-    int getYear(){
-        return date[2];
-    }
-
-//    int getMonth(){
-//        return date's second integer
-//    }
-    int getMonth(){
-        return date[1];
-    }
-
-//    int getDay(){
-//        return date's first integer
-//    }
-    int getDay(){
-        return date[0];
     }
 
 //    setDate(String date){
     boolean setDate(String date) {
+
 //        if validateDate(date)
-        if (validateDate(date)) {
-            date = date.replaceAll("-", " ");
-            Scanner dateString = new Scanner(date);
-//            read in integer from front into second integer of date
-            this.date[1] = dateString.nextInt();
-//            skip 1 character
-//            read in integer into first
-            this.date[0] = dateString.nextInt();
-//            skip 1 character
-//            read in integer into third
-            this.date[2] = dateString.nextInt();
+        if (isDateValid(date)) {
+            this.date = date;
             return true;
         }
 //        else
         else {
-//            date is set to hold zeros
-            this.date[0] = 0;
-            this.date[1] = 0;
-            this.date[2] = 0;
+//            date is given default
+            this.date = "No Date";
             return false;
         }
     }

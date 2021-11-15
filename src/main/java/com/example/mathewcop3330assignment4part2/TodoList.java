@@ -59,6 +59,16 @@ public class TodoList {
             return false;
     }
 
+//    removeAllItem(){
+//        uses loop to iterate from ListSize to 0
+//            removes items from end to beginning of array
+//    }
+    void removeAllItem(){
+        for(int i=ListSize-1; i>=0; i--){
+            List.remove(i);
+        }
+    }
+
 //    private boolean validateIndex(int index){
 //        if int index > 0 and < length of array
 //            return true
