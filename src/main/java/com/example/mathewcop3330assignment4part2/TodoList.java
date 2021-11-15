@@ -67,6 +67,7 @@ public class TodoList {
         for(int i=ListSize-1; i>=0; i--){
             List.remove(i);
         }
+        ListSize = 0;
     }
 
 //    private boolean validateIndex(int index){

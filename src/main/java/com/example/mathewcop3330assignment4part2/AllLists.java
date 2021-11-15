@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class AllLists {
 
 //    public ArrayList<TodoList> TLList
-    public ArrayList<com.example.mathewcop3330assignment4part2.TodoList> TLList;
+    public ArrayList<TodoList> TLList;
 //    //holds  todoLists
 
 //    private int TLListSize
