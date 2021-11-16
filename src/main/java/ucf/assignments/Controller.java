@@ -1,3 +1,8 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 4 Solution
+ *  Copyright 2021 Austin Mathew
+ */
+
 package ucf.assignments;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -8,19 +13,27 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Controller {
     TodoList todoList;
+    FileIO fileIO;
     int currentIndex;
     ObservableList<DisplayItem> displayItems;
     boolean complete, incomplete;
+    File file;
 
 
     @FXML
 
     public TextField IDText;
     public TextField DateText;
+    public TextField fileNameText;
     public TextArea DescriptionText;
     public CheckBox Complete;
     public CheckBox FilterComplete;
@@ -31,8 +44,12 @@ public class Controller {
     public TableColumn<DisplayItem, SimpleStringProperty> DescriptionList;
     public TableColumn<DisplayItem, SimpleStringProperty> CompleteList;
 
+    public void initializeFile(){
+        if(file==null){
+        }
+    }
     public int IDText2Int(){
-        if(IDText.getText()!="") {
+        if(!Objects.equals(IDText.getText(), "")) {
             Scanner id = new Scanner(IDText.getText());
             return id.nextInt();
         }
@@ -45,6 +62,13 @@ public class Controller {
         if (todoList ==null) {
             todoList = new TodoList();
             currentIndex = -1;
+        }
+    }
+
+    public void initializeFileIO() throws FileNotFoundException {
+        if(fileIO == null) {
+            String filename = fileNameText.getText();
+            fileIO = new FileIO(filename);
         }
     }
 
@@ -119,12 +143,40 @@ public class Controller {
         display();
     }
 
-    public void LoadFileAction(ActionEvent actionEvent) {
+    public void LoadFileAction(ActionEvent actionEvent) throws FileNotFoundException {
         initializeTodoList();
+        /*initializeFileIO();
+        fileIO.loadFile(todoList);*/
+        Scanner inputReader = new Scanner("src/main/java/ucf/assignments/Storage.txt");
+        int ListSize = inputReader.nextInt();
+        for(int i=0; i<ListSize; i++){
+            String date = inputReader.nextLine();
+            String description = inputReader.nextLine();
+            boolean complete = inputReader.nextLine().equals("y");
+            todoList.List.add(new Item(description, date, complete));
+        }
     }
 
-    public void SaveAction(ActionEvent actionEvent) {
+    public void SaveAction(ActionEvent actionEvent) throws IOException {
         initializeTodoList();
+        //initializeFileIO();
+        //fileIO.setOutput(fileNameText.getText());
+        //fileIO.saveFile(todoList);
+        FileWriter outWriter = new FileWriter("src/main/java/ucf/assignments/Storage.txt");
+        outWriter.write("hellloooooo");
+        outWriter.write(todoList.getListSize()+"\n");
+        for(int i=0; i<todoList.getListSize(); i++){
+            outWriter.write(todoList.List.get(i).getDate()+"\n");
+            outWriter.write(todoList.List.get(i).getDescription()+"\n");
+            if(todoList.List.get(i).getComplete()){
+                outWriter.write("y\n");
+            }
+            else{
+                outWriter.write("n\n");
+            }
+        }
+        System.out.println("hello");
+
     }
 
     public void ToggleComplete(ActionEvent actionEvent) {
@@ -136,10 +188,10 @@ public class Controller {
     }
 
     public  void display(){
-        IDList.setCellValueFactory(new PropertyValueFactory<DisplayItem, Integer>("ID"));
-        DateList.setCellValueFactory(new PropertyValueFactory<DisplayItem, SimpleStringProperty>("date"));
-        DescriptionList.setCellValueFactory(new PropertyValueFactory<DisplayItem, SimpleStringProperty>("description"));
-        CompleteList.setCellValueFactory(new PropertyValueFactory<DisplayItem, SimpleStringProperty>("complete"));
+        IDList.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        DateList.setCellValueFactory(new PropertyValueFactory<>("date"));
+        DescriptionList.setCellValueFactory(new PropertyValueFactory<>("description"));
+        CompleteList.setCellValueFactory(new PropertyValueFactory<>("complete"));
         TodoListView.setItems(getItemList());
     }
 
