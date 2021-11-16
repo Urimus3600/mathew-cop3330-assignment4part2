@@ -26,13 +26,13 @@ public class Controller {
     ObservableList<DisplayItem> displayItems;
     boolean complete, incomplete;
     File file;
+    //variables for storing information and states
 
 
     @FXML
 
     public TextField IDText;
     public TextField DateText;
-    public TextField fileNameText;
     public TextArea DescriptionText;
     public CheckBox Complete;
     public CheckBox FilterComplete;
@@ -42,11 +42,10 @@ public class Controller {
     public TableColumn<DisplayItem, SimpleStringProperty> DateList;
     public TableColumn<DisplayItem, SimpleStringProperty> DescriptionList;
     public TableColumn<DisplayItem, SimpleStringProperty> CompleteList;
+    //items from fxml file which are used here
 
-    public void initializeFile(){
-        if(file==null){
-        }
-    }
+    //reads in from ID text field and converts to int, or returns non-breaking value if int is not valid
+
     public int IDText2Int(){
         if(!Objects.equals(IDText.getText(), "")) {
             Scanner id = new Scanner(IDText.getText());
@@ -57,6 +56,8 @@ public class Controller {
         }
     }
 
+    //if not initialized and a button is pressed todolist will be initialized
+    //work around for no constructor
     public void initializeTodoList() {
         if (todoList ==null) {
             todoList = new TodoList();
@@ -64,6 +65,7 @@ public class Controller {
         }
     }
 
+    //create new item based on current strings inside textfields
     public void AddItemAction(ActionEvent actionEvent) {
         initializeTodoList();
         currentIndex=todoList.getListSize();
@@ -73,17 +75,20 @@ public class Controller {
         display();
     }
 
+    //remove item based on current ID
     public void RemoveItemAction(ActionEvent actionEvent) {
         todoList.removeItem(IDText2Int());
         display();
     }
 
+    //removes all items
     public void ClearAllAction(ActionEvent actionEvent) {
         initializeTodoList();
         todoList.removeAllItem();
         display();
     }
 
+    //displays item in item display based on ID text field
     public void FindItem(ActionEvent actionEvent) {
         initializeTodoList();
         int index = IDText2Int();
@@ -103,6 +108,7 @@ public class Controller {
         }
         display();
     }
+
 
     public void ReplaceDate(ActionEvent actionEvent) {
         initializeTodoList();
