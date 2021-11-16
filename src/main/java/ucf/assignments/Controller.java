@@ -166,7 +166,6 @@ public class Controller {
                 outWriter.write("n\n");
             }
         }
-        System.out.println("hello");
 
     }
 
