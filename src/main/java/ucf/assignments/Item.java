@@ -90,7 +90,7 @@ public class Item {
 //    private String getDate(){
 //        return concatenated string of integer at 1 then a dash then the one at 0 then dash then the one at 2
 //    }
-    private String getDate(){
+    String getDate(){
         return date;
     }
     final static String DATE_FORMAT = "yyyy-MM-dd";
