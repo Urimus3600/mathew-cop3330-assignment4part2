@@ -22,7 +22,6 @@ import java.util.Scanner;
 
 public class Controller {
     TodoList todoList;
-    FileIO fileIO;
     int currentIndex;
     ObservableList<DisplayItem> displayItems;
     boolean complete, incomplete;
@@ -62,13 +61,6 @@ public class Controller {
         if (todoList ==null) {
             todoList = new TodoList();
             currentIndex = -1;
-        }
-    }
-
-    public void initializeFileIO() throws FileNotFoundException {
-        if(fileIO == null) {
-            String filename = fileNameText.getText();
-            fileIO = new FileIO(filename);
         }
     }
 
@@ -163,7 +155,6 @@ public class Controller {
         //fileIO.setOutput(fileNameText.getText());
         //fileIO.saveFile(todoList);
         FileWriter outWriter = new FileWriter("src/main/java/ucf/assignments/Storage.txt");
-        outWriter.write("hellloooooo");
         outWriter.write(todoList.getListSize()+"\n");
         for(int i=0; i<todoList.getListSize(); i++){
             outWriter.write(todoList.List.get(i).getDate()+"\n");
